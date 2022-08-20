@@ -136,39 +136,12 @@ io.on('connection', function(socket) {
     socket.emit('ready', 'Whatsapp is ready!');
     socket.emit('message', 'Whatsapp is ready!');
   });
-//nk
-  const fs = require('fs');
-const { Client, LegacySessionAuth } = require('whatsapp-web.js');
 
-// Path where the session data will be stored
-const SESSION_FILE_PATH = './session.json';
-
-// Load the session data if it has been previously saved
-let sessionData;
-if(fs.existsSync(SESSION_FILE_PATH)) {
-    sessionData = require(SESSION_FILE_PATH);
-}
-
-// Use the saved values
-const client = new Client({
-    authStrategy: new LegacySessionAuth({
-        session: sessionData
-    })
-});
-
-  //nk
   client.on('authenticated', (session) => {
     socket.emit('authenticated', 'Whatsapp is authenticated!');
     socket.emit('message', 'Whatsapp is authenticated!');
     console.log('AUTHENTICATED');
-    //nk
-     sessionData = session;
-    fs.writeFile(SESSION_FILE_PATH, JSON.stringify(session), (err) => {
-        if (err) {
-            console.error(err);
-        }console.log(session);
-    });
-    //nk
+   console.log(session);
   });
 
   client.on('auth_failure', function(session) {
