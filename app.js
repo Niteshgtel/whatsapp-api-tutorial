@@ -60,7 +60,7 @@ client.on('message', msg => {
   if (msg.body == '!ping') {
     msg.reply('pong');
   } else if (msg.body == 'good morning') {
-    msg.reply('selamat pagi');
+    msg.reply('ssame too you');
   } else if (msg.body == '!groups') {
     client.getChats().then(chats => {
       const groups = chats.filter(chat => chat.isGroup);
@@ -77,34 +77,7 @@ client.on('message', msg => {
       }
     });
   }
-////nk
- // const app = express();
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
-app.use(morgan('dev'));
 
-app.post('/sendmessage', async (req, res, next) => {
-  try {
-    const { number, message } = req.body; // Get the body
-    const msg = await client.sendMessage(`${number}@c.us`, message); // Send the message
-    res.send({ msg }); // Send the response
-  } catch (error) {
-    next(error);
-  }
-});
-
-app.get('/send', async (req, res, next) => {
-  try {
-    const  number = req.query.number // Get the body
-     const  message = req.query.message // Get the body
-    const msg = await client.sendMessage(`${number}@c.us`, message); // Send the message
-    res.send({ msg }); // Send the response
-  } catch (error) {
-    next(error);
-  }
-});
-
-  /////nk
   // NOTE!
   // UNCOMMENT THE SCRIPT BELOW IF YOU WANT TO SAVE THE MESSAGE MEDIA FILES
   // Downloading media
