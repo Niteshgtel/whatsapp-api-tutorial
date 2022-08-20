@@ -137,11 +137,10 @@ io.on('connection', function(socket) {
     socket.emit('message', 'Whatsapp is ready!');
   });
 
-  client.on('authenticated', (session) => {
+  client.on('authenticated', () => {
     socket.emit('authenticated', 'Whatsapp is authenticated!');
     socket.emit('message', 'Whatsapp is authenticated!');
     console.log('AUTHENTICATED');
-   console.log(session);
   });
 
   client.on('auth_failure', function(session) {
