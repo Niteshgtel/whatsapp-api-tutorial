@@ -60,8 +60,10 @@ client.on('message', msg => {
   if (msg.body == '!ping') {
     msg.reply('pong');
   } else if (msg.body == 'good morning') {
-    msg.reply('ssame too you');
-  } else if (msg.body == '!groups') {
+    msg.reply('same too you');
+  } else if (msg.body == 'Hi') {
+    msg.reply('hello');
+  }else if (msg.body == '!groups') {
     client.getChats().then(chats => {
       const groups = chats.filter(chat => chat.isGroup);
 
